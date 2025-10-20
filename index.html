@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Centros de Asistencia</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Centros de Asistencia</h1>
+    </header>
+    <main>
+      <div class="contenedor">
+        <aside id="panel-centros">
+        <h2>Listado de Centros</h2>
+
+        <div class="filtros">
+          <button id="btnFijos">Centros Fijos</button>
+          <button id="btnMoviles">Centros Móviles</button>
+          <button id="btnTodos">Mostrar Todos</button>
+        </div>
+        
+        <ul id="lista-centros"></ul>
+      </aside>
+
+      <div id="map"></div>
+    </main>
+    <footer>
+      <p>Prototipo Segunda Entrega - Ingeniería de Software - 2025</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
