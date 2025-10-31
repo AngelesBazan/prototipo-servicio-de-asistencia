@@ -7,9 +7,9 @@ export const centrosFijos = [
 ];
 
 export const centrosMoviles = [
-  { nombre: "Móvil 1 - Parque Lezama", coords: [-34.628, -58.372], detalle: "Unidad móvil con enfermería y asistencia rápida.", horario: "Horario: 8 a 17." },
-  { nombre: "Móvil 2 - Palermo", coords: [-34.571, -58.423], detalle: "Unidad móvil de primeros auxilios y orientación.", horario: "Horario: 8 a 17." },
-  { nombre: "Móvil 3 - Mataderos", coords: [-34.655, -58.505], detalle: "Unidad móvil para eventos masivos y ferias.", horario: "Horario: 8 a 17." },
-  { nombre: "Móvil 4 - Belgrano", coords: [-34.563, -58.456], detalle: "Atención médica itinerante y guía de turistas.", horario: "Horario: 8 a 17." },
-  { nombre: "Móvil 5 - Recoleta", coords: [-34.587, -58.393], detalle: "Asistencia médica y atención de emergencias menores.", horario: "Horario: 8 a 17." },
+  { nombre: "movil 1 - Parque Lezama", coords: [-34.628, -58.372], detalle: "Unidad móvil con enfermería y asistencia rápida.", horario: "Horario: 8 a 17." },
+  { nombre: "movil 2 - Palermo", coords: [-34.571, -58.423], detalle: "Unidad móvil de primeros auxilios y orientación.", horario: "Horario: 8 a 17." },
+  { nombre: "movil 3 - Mataderos", coords: [-34.655, -58.505], detalle: "Unidad móvil para eventos masivos y ferias.", horario: "Horario: 8 a 17." },
+  { nombre: "movil 4 - Belgrano", coords: [-34.563, -58.456], detalle: "Atención médica itinerante y guía de turistas.", horario: "Horario: 8 a 17." },
+  { nombre: "movil 5 - Recoleta", coords: [-34.587, -58.393], detalle: "Asistencia médica y atención de emergencias menores.", horario: "Horario: 8 a 17." },
 ];

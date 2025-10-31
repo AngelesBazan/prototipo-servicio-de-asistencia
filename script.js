@@ -27,6 +27,7 @@ const iconoMovil = L.icon({
   popupAnchor: [0, -30],
 });
 
+let grupoBusqueda = L.layerGroup(); // <-- AÑADE ESTA LÍNEA
 // Marcadores de centros fijos
 centrosFijos.forEach((c) => {
   const marker = L.marker(c.coords, { icon: iconoFijo }).bindPopup(
@@ -110,6 +111,7 @@ const seleccionarCentro = (centro, index) => {
     .querySelectorAll("#lista-centros li")
     .forEach((li) => {
       li.classList.remove("activo")
+      li.classList.remove("expande")
     });
   document.querySelectorAll("#lista-centros li")[index].classList.toggle("activo");
   document.querySelectorAll("#lista-centros li")[index].classList.toggle("expande");
@@ -136,11 +138,15 @@ const botonUbicacion = (centro, index) => {
 // --- SELECCION DESDE EL MAPA ---
 marcadores.forEach((marker) => {
   marker.on("click", () => {
+    map.setView(marker.getLatLng(), 15);
     const index = listaActual.findIndex((c) => c.nombre === marker.nombre);
     if (index !== -1) {
       document
         .querySelectorAll("#lista-centros li")
-        .forEach((li) => li.classList.remove("activo"));
+        .forEach((li) =>{ 
+          li.classList.remove("activo")
+          li.classList.remove("expande")
+        });
       const liSeleccionado =
         document.querySelectorAll("#lista-centros li")[index];
       liSeleccionado.classList.toggle("activo");
@@ -164,9 +170,41 @@ const busqueda = () =>{
     return c.nombre.toLowerCase().includes(centroElegido.toLowerCase());
   })
   renderLista(centrosCoincidentesBusqueda);
-  map.addLayer(centrosCoincidentesBusqueda);
 
+
+  map.removeLayer(grupoFijos);
+  map.removeLayer(grupoMoviles);
+  let grupoBusqueda = L.layerGroup();
+
+  const nombresCoincidentes = centrosCoincidentesBusqueda.map(c => c.nombre);
+
+  const marcadoresCoincidentes = marcadores.filter(m => {
+    
+    return nombresCoincidentes.includes(m.nombre);
+
+  });
+  grupoBusqueda = L.layerGroup(marcadoresCoincidentes);
+  grupoBusqueda.addTo(map);
+  restaurarVista(map, [grupoBusqueda]);
+  
 }
+//--evento input --
+const inputBusqueda = document.getElementById("busquedaCentro");
+
+inputBusqueda.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    busqueda(); 
+  }
+});
+
+// 2. Para que muestre todo si el input se vacía
+inputBusqueda.addEventListener("input", () => {
+  // Si el valor, sin espacios, está vacío
+  if (inputBusqueda.value.trim() === "") {
+    // Llama a la función que muestra todo
+    mostrarTodos();
+  }
+});
 // --- BOTONES FILTROS ---
 const mostrarFijos = () => {
   map.removeLayer(grupoMoviles);
